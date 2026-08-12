@@ -1,0 +1,83 @@
+/* uztrading.net — auto-injected blocks (v4)
+ * Risk Disclaimer, Affiliate Disclosure, Trust line.
+ * БЕЗ max-width и без margin: auto — ширина наследуется от Blocksy
+ * .entry-content > * автоматически (так же как для обычных абзацев).
+ */
+
+/* === Base callout structure === */
+.uzt-callout {
+	display: flex;
+	gap: 14px;
+	padding: 16px 20px;
+	margin: 24px 0;
+	border-radius: 8px;
+	border: 1px solid;
+	font-size: 15px;
+	line-height: 1.55;
+	box-sizing: border-box;
+}
+.uzt-callout__icon {
+	flex: 0 0 auto;
+	font-size: 22px;
+	line-height: 1.2;
+}
+.uzt-callout__body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.uzt-callout__body strong {
+	font-weight: 700;
+	margin-right: 4px;
+}
+.uzt-callout a {
+	text-decoration: underline;
+}
+
+/* Risk Disclaimer — amber / warning */
+.uzt-callout--risk {
+	background: #FEF3E2;
+	border-color: #F5A623;
+	color: #7A4E00;
+}
+.uzt-callout--risk a {
+	color: #7A4E00;
+}
+
+/* Affiliate Disclosure — neutral grey */
+.uzt-callout--affiliate {
+	background: #F5F5F5;
+	border-color: #D0D0D0;
+	color: #333;
+}
+.uzt-callout--affiliate a {
+	color: #333;
+}
+
+/* === Trust line === */
+.uzt-trust-line {
+	margin: 40px 0 24px;
+	padding: 16px 0;
+	border-top: 1px solid #E5E5E5;
+	font-size: 14px;
+	color: #666;
+	text-align: center;
+}
+.uzt-trust-line a {
+	color: #666;
+	text-decoration: underline;
+	text-decoration-color: rgba(0,0,0,0.2);
+}
+.uzt-trust-line a:hover {
+	color: #000;
+	text-decoration-color: currentColor;
+}
+
+/* === Mobile (≤ 640 px) === */
+@media (max-width: 640px) {
+	.uzt-callout {
+		flex-direction: column;
+		gap: 8px;
+		padding: 14px 16px;
+		font-size: 14px;
+	}
+}

@@ -1,0 +1,1154 @@
+/*
+Theme Name:   Blocksy Child
+Template:     blocksy
+Version:      1.0.3
+Text Domain:  blocksy-child
+Description:  Дочерняя тема Blocksy для uztrading.net — CPT crypto_exchange, ACF-поля, FAQPage Schema, E-E-A-T автор, auto-blocks (Risk / Affiliate / Trust line). Плашки блога (TL;DR / Fact-check), header dropdown overrides, светлый футер День 5 v2.
+Author:       uztrading.net
+Author URI:   https://uztrading.net
+*/
+
+/* ============================================================
+ * uztrading.net · Blocksy Child · style.css — v4 ред. 2 (tokenized, compact)
+ * ============================================================
+ * 1. Токены и база
+ * 2. Карточка брокера
+ * 3. FAQ-аккордеон
+ * 4. UZT Reviews + Tabler Icons
+ * 5. Плашки блога (TL;DR / Fact-check)
+ * 6. Header dropdown overrides
+ * 7. Светлый футер (День 5 v2, WCAG-friendly)
+ * ============================================================ */
+
+
+/* ==================== 1. ТОКЕНЫ И БАЗА ==================== */
+:root {
+	/* --- Брендовые цвета --- */
+	--color-brand-primary:              #0B5FFF;
+	--color-brand-primary-hover:        #0A4FD9;
+	--color-brand-primary-soft:         rgba(11, 95, 255, 0.08);
+	--color-brand-primary-soft-hover:   rgba(11, 95, 255, 0.14);
+	--color-brand-on-primary:           #FFFFFF;
+
+	/* --- Нейтральная шкала --- */
+	--color-neutral-0:                  #FFFFFF;
+	--color-neutral-50:                 #F7F9FC;
+	--color-neutral-200:                #E2E8F0;
+	--color-neutral-500:                #64748B;
+	--color-neutral-600:                #475569;
+	--color-neutral-700:                #334155;
+	--color-neutral-900:                #0F172A;
+
+	/* --- Акценты (rating) --- */
+	--color-rating-star-fill:           #F5A623;
+	--color-rating-text:                #B8681F;
+
+	/* --- Радиусы --- */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+}
+
+.font-numeric,
+table td {
+	font-variant-numeric: tabular-nums lining-nums;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+	outline: 2px solid var(--color-brand-primary);
+	outline-offset: 2px;
+}
+
+.entry-card,
+.ct-card {
+	border-radius: var(--radius-lg);
+}
+
+
+/* ==================== 2. КАРТОЧКА БРОКЕРА ==================== */
+.uzt-broker {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 16px;
+	color: var(--color-neutral-700);
+	font-family: inherit;
+	line-height: 1.6;
+}
+
+.uzt-broker h1,
+.uzt-broker h2,
+.uzt-broker h3 {
+	color: var(--color-neutral-900);
+}
+
+.uzt-broker h2 {
+	font-size: 24px;
+	margin: 32px 0 12px;
+}
+
+.uzt-broker h3 {
+	font-size: 18px;
+	margin: 20px 0 8px;
+}
+
+.uzt-broker section {
+	margin-bottom: 24px;
+}
+
+/* --- Hero --- */
+.uzt-hero {
+	background: var(--color-neutral-50);
+	border: 1px solid var(--color-neutral-200);
+	border-radius: var(--radius-lg);
+	padding: 24px;
+}
+
+.uzt-hero__logo {
+	max-width: 160px;
+	height: auto;
+	margin-bottom: 12px;
+}
+
+.uzt-hero__title {
+	font-size: 28px;
+	margin: 0 0 12px;
+}
+
+/* --- Rating --- */
+.uzt-rating {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 12px;
+	font-size: 18px;
+	color: var(--color-rating-text);
+}
+
+.uzt-rating__bar {
+	position: relative;
+	display: inline-block;
+	width: 110px;
+	height: 18px;
+	background: var(--color-neutral-200);
+	border-radius: var(--radius-sm);
+	overflow: hidden;
+}
+
+.uzt-rating__fill {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	background: var(--color-rating-star-fill);
+}
+
+/* --- Badges --- */
+.uzt-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 16px;
+}
+
+.uzt-badge {
+	display: inline-block;
+	padding: 4px 10px;
+	border-radius: var(--radius-md);
+	background: var(--color-neutral-200);
+	color: var(--color-neutral-700);
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.uzt-badge--ok {
+	background: #DCFCE7;
+	color: #166534;
+}
+
+.uzt-badge--halal {
+	background: #0A7A68;
+	color: #fff;
+}
+
+/* --- KPI --- */
+.uzt-kpi {
+	display: flex;
+	gap: 12px;
+	margin-bottom: 16px;
+	flex-wrap: wrap;
+}
+
+.uzt-kpi__item {
+	flex: 1;
+	min-width: 90px;
+	background: var(--color-neutral-0);
+	border: 1px solid var(--color-neutral-200);
+	border-radius: var(--radius-md);
+	padding: 10px;
+	text-align: center;
+}
+
+.uzt-kpi__item span {
+	display: block;
+	font-size: 12px;
+	color: var(--color-neutral-500);
+}
+
+.uzt-kpi__item strong {
+	font-size: 18px;
+	color: var(--color-neutral-900);
+}
+
+/* --- CTA --- */
+.uzt-cta,
+.uzt-cta:link,
+.uzt-cta:visited {
+	display: inline-block;
+	background: var(--color-brand-primary);
+	color: var(--color-brand-on-primary) !important;
+	font-weight: 700;
+	padding: 12px 24px;
+	border-radius: var(--radius-md);
+	text-decoration: none;
+}
+
+.uzt-cta:hover,
+.uzt-cta:focus,
+.uzt-cta:active {
+	background: var(--color-brand-primary-hover);
+	color: var(--color-brand-on-primary) !important;
+	text-decoration: none;
+}
+
+.uzt-cta--sm {
+	padding: 8px 16px;
+}
+
+.uzt-cta__note {
+	font-size: 12px;
+	color: var(--color-neutral-600);
+	margin: 6px 0 0;
+}
+
+/* --- Risk (жёлтая плашка) --- */
+.uzt-risk {
+	margin-top: 16px;
+	font-size: 14px;
+	background: #FEF3C7;
+	border: 1px solid #FCD34D;
+	color: #92400E;
+	padding: 12px;
+	border-radius: var(--radius-md);
+}
+
+/* --- Table --- */
+.uzt-broker table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 8px 0;
+}
+
+.uzt-broker th,
+.uzt-broker td {
+	border: 1px solid var(--color-neutral-200);
+	padding: 10px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.uzt-broker th {
+	background: var(--color-neutral-50);
+	color: var(--color-neutral-900);
+	width: 40%;
+}
+
+/* --- Pros / Cons --- */
+.uzt-proscons {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.uzt-pros,
+.uzt-cons {
+	flex: 1;
+	min-width: 240px;
+	border: 1px solid var(--color-neutral-200);
+	border-radius: var(--radius-lg);
+	padding: 16px;
+}
+
+.uzt-pros h2 {
+	color: #166534;
+}
+
+.uzt-cons h2 {
+	color: #B91C1C;
+}
+
+.uzt-pros li,
+.uzt-cons li {
+	margin-bottom: 6px;
+}
+
+/* --- Trust / Disclaimer --- */
+.uzt-trust {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	font-size: 14px;
+	color: var(--color-neutral-600);
+	background: var(--color-neutral-50);
+	border-radius: var(--radius-md);
+	padding: 12px;
+}
+
+.uzt-trust a {
+	color: var(--color-brand-primary);
+	text-decoration: none;
+}
+
+.uzt-disclaimer {
+	font-size: 13px;
+	color: var(--color-neutral-600);
+	background: var(--color-neutral-50);
+	border-radius: var(--radius-md);
+	padding: 16px;
+}
+
+.uzt-disclaimer a,
+.uzt-verdict a {
+	text-decoration: underline;
+}
+
+/* --- Sticky mobile CTA --- */
+.uzt-sticky {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 50;
+	display: none;
+	align-items: center;
+	gap: 8px;
+	background: #fff;
+	border-top: 1px solid var(--color-neutral-200);
+	padding: 8px 12px;
+	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.uzt-sticky__name {
+	flex: 1;
+	font-weight: 600;
+	font-size: 14px;
+	color: var(--color-neutral-900);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.uzt-grid__value {
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+/* --- Mobile карточки брокера --- */
+@media (max-width: 768px) {
+	.uzt-hero__title {
+		font-size: 22px;
+	}
+	.uzt-sticky {
+		display: flex;
+	}
+	.uzt-broker {
+		padding-bottom: 80px;
+	}
+}
+
+
+/* ==================== 3. FAQ-АККОРДЕОН ==================== */
+.uzt-faq__item {
+	border: 1px solid var(--color-neutral-200);
+	border-radius: var(--radius-md);
+	margin-bottom: 8px;
+	background: #fff;
+}
+
+.uzt-faq__q {
+	cursor: pointer;
+	padding: 14px 44px 14px 16px;
+	font-weight: 600;
+	color: var(--color-neutral-900);
+	list-style: none;
+	position: relative;
+}
+
+.uzt-faq__q::-webkit-details-marker {
+	display: none;
+}
+
+.uzt-faq__q::after {
+	content: "+";
+	position: absolute;
+	right: 16px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 22px;
+	line-height: 1;
+	color: var(--color-brand-primary);
+}
+
+.uzt-faq__item[open] .uzt-faq__q::after {
+	content: "–";
+}
+
+.uzt-faq__a {
+	padding: 0 16px 16px;
+	color: var(--color-neutral-700);
+}
+
+.uzt-faq__a p {
+	margin: 0 0 8px;
+}
+
+.uzt-faq__a p:last-child {
+	margin-bottom: 0;
+}
+
+
+/* ==================== 4. UZT REVIEWS ==================== */
+.uzt-broker-reviews {
+	/* Локальные алиасы, привязанные к глобальным токенам */
+	--uzt-primary:        var(--color-brand-primary);
+	--uzt-primary-hover:  var(--color-brand-primary-hover);
+	--uzt-primary-soft:   #E6EEFF;
+	--uzt-star:           var(--color-rating-star-fill);
+	--uzt-star-empty:     var(--color-neutral-200);
+	--uzt-text:           var(--color-neutral-700);
+	--uzt-heading:        var(--color-neutral-900);
+	--uzt-muted:          var(--color-neutral-600);
+	--uzt-border:         var(--color-neutral-200);
+	--uzt-bg-soft:        var(--color-neutral-50);
+	--uzt-radius:         var(--radius-lg);
+	--uzt-shadow:         0 1px 3px rgba(15, 23, 42, 0.06);
+
+	display: block;
+	margin: 32px 0;
+	color: var(--uzt-text);
+}
+
+.uzt-broker-reviews > h2:first-child {
+	margin: 0 0 20px;
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--uzt-heading);
+}
+
+/* -------- 4.1 Summary -------- */
+.uzt-broker-reviews__summary {
+	background: #fff;
+	border: 1px solid var(--uzt-border);
+	border-radius: var(--uzt-radius);
+	box-shadow: var(--uzt-shadow);
+	padding: 24px;
+	margin-bottom: 24px;
+}
+
+.uzt-broker-reviews__summary .glsr-summary {
+	display: grid;
+	grid-template-columns: 200px 1fr;
+	gap: 32px;
+	align-items: center;
+}
+
+.uzt-broker-reviews__summary .glsr-summary__rating,
+.uzt-broker-reviews__summary [class*="summary__rating"] {
+	font-size: 48px;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--uzt-heading);
+	text-align: center;
+}
+
+.uzt-broker-reviews__summary .glsr-summary__stars {
+	display: flex;
+	justify-content: center;
+	gap: 2px;
+	margin: 8px 0;
+}
+
+.uzt-broker-reviews__summary .glsr-summary__count,
+.uzt-broker-reviews__summary .glsr-summary__reviews-count {
+	font-size: 14px;
+	color: var(--uzt-muted);
+	text-align: center;
+}
+
+.uzt-broker-reviews__summary .glsr-bar-chart {
+	display: grid;
+	gap: 6px;
+}
+
+.uzt-broker-reviews__summary .glsr-bar {
+	display: grid;
+	grid-template-columns: 40px 1fr 40px;
+	align-items: center;
+	gap: 10px;
+	font-size: 13px;
+	color: var(--uzt-muted);
+}
+
+.uzt-broker-reviews__summary .glsr-bar-background {
+	height: 8px;
+	background: var(--uzt-star-empty);
+	border-radius: var(--radius-sm);
+	overflow: hidden;
+}
+
+.uzt-broker-reviews__summary .glsr-bar-foreground {
+	height: 100%;
+	background: var(--uzt-star);
+	border-radius: var(--radius-sm);
+	transition: width 0.3s ease;
+}
+
+/* -------- 4.2 Reviews list -------- */
+.uzt-broker-reviews__list {
+	display: grid;
+	gap: 16px;
+	margin-bottom: 32px;
+}
+
+.uzt-broker-reviews__list .glsr-review {
+	background: #fff;
+	border: 1px solid var(--uzt-border);
+	border-radius: var(--uzt-radius);
+	box-shadow: var(--uzt-shadow);
+	padding: 20px 24px;
+}
+
+.uzt-broker-reviews__list .glsr-review__header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 8px;
+}
+
+.uzt-broker-reviews__list .glsr-review__title,
+.uzt-broker-reviews__list .glsr-review__author {
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--uzt-heading);
+}
+
+.uzt-broker-reviews__list .glsr-review__date {
+	font-size: 13px;
+	color: var(--uzt-muted);
+}
+
+.uzt-broker-reviews__list .glsr-review__rating,
+.uzt-broker-reviews__list .glsr-review__stars {
+	display: inline-flex;
+	gap: 2px;
+	margin: 4px 0 10px;
+}
+
+.uzt-broker-reviews__list .glsr-review__content {
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--uzt-text);
+	margin: 0;
+}
+
+/* -------- 4.3 Star icons -------- */
+.uzt-broker-reviews .glsr-star,
+.uzt-broker-reviews .glsr-star-full,
+.uzt-broker-reviews svg[class*="star"] {
+	width: 18px;
+	height: 18px;
+	fill: var(--uzt-star);
+}
+
+.uzt-broker-reviews .glsr-star-empty {
+	fill: var(--uzt-star-empty);
+}
+
+/* -------- 4.4 Pagination -------- */
+.uzt-broker-reviews .glsr-pagination {
+	display: flex;
+	justify-content: center;
+	gap: 6px;
+	margin-top: 20px;
+}
+
+.uzt-broker-reviews .glsr-pagination a,
+.uzt-broker-reviews .glsr-pagination span {
+	padding: 6px 12px;
+	border: 1px solid var(--uzt-border);
+	border-radius: 6px;
+	font-size: 14px;
+	color: var(--uzt-text);
+	text-decoration: none;
+	transition: all 0.15s ease;
+}
+
+.uzt-broker-reviews .glsr-pagination a:hover {
+	border-color: var(--uzt-primary);
+	color: var(--uzt-primary);
+}
+
+.uzt-broker-reviews .glsr-pagination .current {
+	background: var(--uzt-primary);
+	border-color: var(--uzt-primary);
+	color: #fff;
+}
+
+/* -------- 4.5 Form -------- */
+.uzt-broker-reviews__form {
+	background: var(--uzt-bg-soft);
+	border: 1px solid var(--uzt-border);
+	border-radius: var(--uzt-radius);
+	padding: 24px;
+}
+
+.uzt-broker-reviews__form-title {
+	margin: 0 0 16px;
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--uzt-heading);
+}
+
+.uzt-broker-reviews__form .glsr-field {
+	margin-bottom: 14px;
+}
+
+.uzt-broker-reviews__form .glsr-field label {
+	display: block;
+	margin-bottom: 6px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--uzt-text);
+}
+
+.uzt-broker-reviews__form input[type="text"],
+.uzt-broker-reviews__form input[type="email"],
+.uzt-broker-reviews__form input[type="url"],
+.uzt-broker-reviews__form textarea,
+.uzt-broker-reviews__form select {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid var(--uzt-border);
+	border-radius: var(--radius-md);
+	font: inherit;
+	font-size: 15px;
+	background: #fff;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.uzt-broker-reviews__form input:focus,
+.uzt-broker-reviews__form textarea:focus,
+.uzt-broker-reviews__form select:focus {
+	border-color: var(--uzt-primary);
+	box-shadow: 0 0 0 3px var(--uzt-primary-soft);
+}
+
+.uzt-broker-reviews__form .glsr-button,
+.uzt-broker-reviews__form button[type="submit"] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 28px;
+	background: var(--uzt-primary);
+	color: #fff;
+	border: none;
+	border-radius: var(--radius-md);
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s ease;
+}
+
+.uzt-broker-reviews__form .glsr-button:hover,
+.uzt-broker-reviews__form button[type="submit"]:hover {
+	background: var(--uzt-primary-hover);
+	color: #fff;
+}
+
+.uzt-broker-reviews__form button[disabled],
+.uzt-broker-reviews__form button[aria-busy="true"] {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+/* -------- 4.6 Source badges (E-E-A-T редакция vs внешний) -------- */
+.uzt-review-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin: 10px 0 0;
+	padding: 4px 10px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.uzt-review-badge--editorial {
+	background: #E6F9ED;
+	color: #06753A;
+}
+
+.uzt-review-badge--external {
+	background: #F0F2F5;
+	color: #555;
+}
+
+.uzt-review-badge__icon {
+	font-size: 14px;
+	line-height: 1;
+}
+
+/* -------- 4.7 Success/error messages -------- */
+.uzt-broker-reviews [class*="form-message"] {
+	margin: 12px 0 0;
+	padding: 12px 16px;
+	border-radius: var(--radius-md);
+	font-size: 14px;
+}
+
+.uzt-broker-reviews [class*="form-message"][data-type="success"] {
+	background: #DCFCE7;
+	color: #166534;
+	border: 1px solid #86EFAC;
+}
+
+.uzt-broker-reviews [class*="form-message"][data-type="error"] {
+	background: #FEF2F2;
+	color: #991B1B;
+	border: 1px solid #FCA5A5;
+}
+
+/* -------- 4.8 Empty state (разделено: контейнер + content) -------- */
+/* Общий стиль контейнера — применяется и к :empty::before, и к реальному .glsr-no-results */
+.uzt-broker-reviews__list:empty::before,
+.uzt-broker-reviews__list .glsr-no-results {
+	display: block;
+	text-align: center;
+	padding: 40px 20px;
+	color: var(--uzt-muted);
+	font-size: 15px;
+	font-style: italic;
+	background: var(--uzt-bg-soft);
+	border: 1px dashed var(--uzt-border);
+	border-radius: var(--uzt-radius);
+}
+
+/* Текст показываем только через ::before, когда список физически пуст */
+.uzt-broker-reviews__list:empty::before {
+	content: "Пока нет отзывов об этом брокере. Станьте первым — воспользуйтесь формой ниже.";
+}
+
+/* -------- 4.9 Mobile (≤ 767px) -------- */
+@media (max-width: 767px) {
+	.uzt-broker-reviews {
+		margin: 24px 0;
+	}
+	.uzt-broker-reviews__summary,
+	.uzt-broker-reviews__form {
+		padding: 16px;
+	}
+	.uzt-broker-reviews__summary .glsr-summary {
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+	.uzt-broker-reviews__summary .glsr-summary__rating {
+		font-size: 36px;
+	}
+	.uzt-broker-reviews__list .glsr-review {
+		padding: 16px 18px;
+	}
+	.uzt-broker-reviews__list .glsr-review__header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 4px;
+	}
+	.uzt-broker-reviews__form-title {
+		font-size: 18px;
+	}
+}
+
+/* -------- 4.10 Split-варианты (v1.3.0) -------- */
+.uzt-broker-reviews--summary-only {
+	margin: 24px 0;
+}
+
+.uzt-broker-reviews--full {
+	margin: 48px 0 32px;
+	scroll-margin-top: 80px;
+}
+
+.uzt-broker-reviews__section-title {
+	margin: 0 0 20px;
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--uzt-heading);
+}
+
+.uzt-broker-reviews__summary-cta {
+	margin: 12px 0 0;
+	text-align: center;
+	font-size: 14px;
+}
+
+.uzt-broker-reviews__summary-cta a {
+	color: var(--uzt-primary);
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.uzt-broker-reviews__summary-cta a:hover {
+	text-decoration: underline;
+}
+
+/* -------- 4.11 E-E-A-T плашка контекста (Шаг 4 спринта) -------- */
+.uzt-reviews-context {
+	display: flex;
+	gap: 0.75rem;
+	padding: 1rem 1.25rem;
+	margin: 1.5rem 0;
+	background: var(--uzt-info-bg, #EEF4FF);
+	border-left: 3px solid var(--uzt-info-border, #3B82F6);
+	border-radius: 6px;
+	font-size: 0.95rem;
+	line-height: 1.55;
+}
+
+.uzt-reviews-context__icon {
+	font-size: 1.35rem;
+	line-height: 1;
+	flex-shrink: 0;
+	padding-top: 0.15rem;
+}
+
+.uzt-reviews-context__body {
+	flex: 1;
+	min-width: 0;
+}
+
+.uzt-reviews-context__title {
+	margin: 0 0 0.5rem;
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--uzt-info-title, #1E3A8A);
+}
+
+.uzt-reviews-context__body p {
+	margin: 0 0 0.65rem;
+}
+
+.uzt-reviews-context__body p:last-child {
+	margin-bottom: 0;
+}
+
+.uzt-reviews-context__note {
+	font-size: 0.88rem;
+	color: var(--uzt-muted, #64748B);
+	font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+	.uzt-reviews-context {
+		background: rgba(59, 130, 246, 0.08);
+		border-left-color: #60A5FA;
+	}
+	.uzt-reviews-context__title {
+		color: #93C5FD;
+	}
+	.uzt-reviews-context__note {
+		color: #94A3B8;
+	}
+}
+
+/* -------- 4.12 Глобальные переопределения и ссылки -------- */
+[style*="#ff9800"] {
+	color: var(--color-rating-text) !important;
+}
+
+.uzt-stars-color {
+	color: var(--color-rating-text);
+}
+
+.entry-content a,
+.single-broker a {
+	text-decoration: underline;
+}
+
+.glsr-review-assigned_links a {
+	text-decoration: underline !important;
+}
+
+.uzt-disclaimer a,
+.uzt-reviews-context a,
+.glsr-review-assigned_links a,
+.uzt-trust a {
+	text-decoration: underline !important;
+}
+
+/* -------- 4.13 Tabler Icons -------- */
+.uzt-icon {
+	width: 24px;
+	height: 24px;
+	stroke: var(--color-brand-primary);
+	fill: none;
+	flex-shrink: 0;
+	transition: stroke 0.2s ease, transform 0.2s ease;
+}
+
+/* Крупная иконка в круге — для Блока 6 (6 критериев главной) */
+.uzt-icon-circle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: var(--color-brand-primary-soft);
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.uzt-icon-circle .uzt-icon {
+	width: 32px;
+	height: 32px;
+}
+
+/* Средняя (Блок 7 — 9 плиток) */
+.uzt-icon-md {
+	width: 32px;
+	height: 32px;
+}
+
+/* Мелкая (Блок 12 — пункты прозрачности) */
+.uzt-icon-sm {
+	width: 20px;
+	height: 20px;
+}
+
+/* Иконка на тёмном фоне (Hero, Telegram CTA) */
+.uzt-icon-light {
+	stroke: var(--color-brand-on-primary);
+}
+
+/* Hover для карточек */
+.uzt-card:hover .uzt-icon-circle {
+	background: var(--color-brand-primary-soft-hover);
+	transform: translateY(-2px);
+}
+
+/* A11Y: уважаем reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.uzt-icon,
+	.uzt-icon-circle,
+	.uzt-card:hover .uzt-icon-circle {
+		transition: none;
+		transform: none;
+	}
+}
+
+
+/* ==================== 5. ПЛАШКИ БЛОГА ==================== */
+/* TL;DR-плашка (краткое содержание статьи) */
+.tldr-box {
+	background-color: #f0f7ff; /* Светло-голубой фон */
+	border-left: 4px solid #1a73e8; /* Синяя акцентная линия */
+	padding: 20px 24px;
+	border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+	margin-bottom: 24px;
+}
+
+.tldr-box > *:first-child {
+	margin-top: 0;
+}
+
+.tldr-box ul {
+	margin-bottom: 0;
+}
+
+/* Fact-check плашка (проверка фактов) */
+.factcheck-box {
+	background-color: #f4f8f1; /* Светло-зелёный фон */
+	border-left: 4px solid #6aa84f; /* Зелёная акцентная линия */
+	padding: 20px 24px;
+	border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+	margin-bottom: 24px;
+	font-size: 0.95em;
+}
+
+.factcheck-box > *:first-child {
+	margin-top: 0;
+}
+
+
+/* ==================== 6. HEADER DROPDOWN OVERRIDES ==================== */
+/* Непереходные родители в главном меню — desktop */
+.ct-header-menu > ul > li.menu-item-has-children > a[href="#"] {
+	pointer-events: none;
+	cursor: default;
+}
+
+/* Mobile — возвращаем клик, чтобы раскрывался dropdown.
+   Брейкпойнт 999px выровнен с внутренней логикой Blocksy menu-switch
+   (в теме переключение desktop-nav → mobile-nav происходит на 1000px). */
+@media (max-width: 999px) {
+	.ct-header-menu li.menu-item-has-children > a[href="#"] {
+		pointer-events: auto;
+	}
+}
+
+
+/* ==================== 7. СВЕТЛЫЙ ФУТЕР UZTRADING (WCAG 100/100) ==================== */
+/* 7.1 Основная сетка (4 колонки) */
+.uzt-footer-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 40px 24px;
+	align-items: start;
+	width: 100%;
+}
+
+/* 7.2 Заголовки колонок — тёмный на светлом, UPPERCASE */
+.uzt-footer-title {
+	font-family: inherit;
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--color-neutral-900);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin: 0 0 16px 0;
+	padding: 0;
+	border: none;
+}
+
+/* 7.3 Списки ссылок — touch targets 8px по вертикали */
+.uzt-footer-links { list-style: none; padding: 0; margin: 0; }
+.uzt-footer-links li { margin: 0; }
+.uzt-footer-links a {
+	display: inline-block;
+	padding: 8px 0;
+	color: var(--color-neutral-700);
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.4;
+	text-decoration: none;
+	transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+.uzt-footer-links a:hover {
+	color: var(--color-brand-primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* 7.4 Левая колонка (дисклеймер) */
+.uzt-legal-text p {
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--color-neutral-700);
+	margin: 0 0 12px 0;
+}
+.uzt-legal-text p:last-child { margin-bottom: 0; }
+.uzt-legal-text strong { color: var(--color-neutral-900); }
+
+/* 7.5 Правая колонка (бренд) */
+.uzt-brand-col { display: flex; flex-direction: column; gap: 16px; }
+.uzt-footer-logo { max-width: 200px; height: auto; }
+.uzt-brand-desc {
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--color-neutral-700);
+	margin: 0;
+}
+.uzt-brand-email {
+	display: inline-block;
+	padding: 8px 0;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--color-neutral-900);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+.uzt-brand-email:hover { color: var(--color-brand-primary); }
+
+/* 7.6 Соцсети — 44×44 (WCAG touch target) */
+.uzt-social-icons { display: flex; gap: 12px; }
+.uzt-social-icons a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 8px;
+	background: var(--color-neutral-50);
+	border: 1px solid var(--color-neutral-200);
+	color: var(--color-neutral-700);
+	transition: all 0.2s ease;
+}
+.uzt-social-icons a:hover {
+	background: var(--color-brand-primary);
+	color: var(--color-brand-on-primary);
+	border-color: var(--color-brand-primary);
+	transform: translateY(-2px);
+}
+
+/* 7.7 Нижний ряд (Bottom Bar) */
+.uzt-footer-bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+	padding: 20px 0;
+	border-top: 1px solid var(--color-neutral-200);
+}
+.uzt-copyright { color: var(--color-neutral-700); font-size: 13px; }
+.uzt-legal-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.uzt-legal-links a {
+	display: block;
+	padding: 8px 0;
+	color: var(--color-neutral-700);
+	font-size: 13px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+.uzt-legal-links a:hover {
+	color: var(--color-brand-primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* 7.8 Адаптивность для мобильных и планшетов */
+@media (max-width: 992px) {
+	.uzt-footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+	.uzt-footer-grid { grid-template-columns: 1fr; gap: 24px 0; }
+	.uzt-footer-bottom {
+		flex-direction: column-reverse;
+		align-items: center;
+		text-align: center;
+		gap: 16px;
+	}
+	.uzt-legal-links { justify-content: center; }
+}
+
+/* 7.9 A11Y: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.uzt-footer-links a,
+	.uzt-brand-email,
+	.uzt-social-icons a,
+	.uzt-legal-links a { transition: none; }
+	.uzt-social-icons a:hover { transform: none; }
+}
